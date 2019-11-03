@@ -1,19 +1,20 @@
 import './App.css';
-//import Form from './component/Form';
+import React from 'react';
+import { Switch, Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+
+import Form from './component/Form';
 import Home from './component/Home';
-import React, { Component } from 'react'
 
-class App extends Component {
-    render() {
-        return ( <Home/> );
-    }
+export default class App extends React.Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/Register" component={Form} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
-
-
-
-
-
-
-
-
-export default App;

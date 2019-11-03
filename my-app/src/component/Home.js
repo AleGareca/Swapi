@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 
-
+import Navbar from './Navbar';
+import TitleSW from './TitleSW';
 
 export default class Home extends Component {
     render() {
         return (
-            <div>
-                <h1 style={btnText}>Star Wars</h1>
-                <h2>Ingrese un numero</h2>
-
-            </div>
-        )
+    <div>
+        <Navbar />
+      <TitleSW/>
+          
+        
+        </div>
+     
+   
+     
+        );
     }
 }
 
-const btnText={
-    fontSize :'18px'
-    
-
-}

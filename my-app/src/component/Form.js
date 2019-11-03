@@ -1,32 +1,109 @@
-import React, { Component } from 'react'
-
+import React from 'react';
 export default class Form extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = { inputValue: '' };
-        }
-        handleInputChange(event) {
-            this.setState({ value: event.target.value });
-        }
-        handleSubmit(event) {
-            event.preventDefault();
-            /* hacer cosas como guardar data, llamar a API, etc… */
-            /*let history = useHistory();
-            history.push("/");*/
-        }
-        render() {
-            return ( <
-                form onSubmit = { this.handleSubmit } >
-                <
-                label > Name:
-                <
-                input type = "text"
-                value = { this.state.value }
-                onChange = { this.handleInputChange }
-                /></label >
-                <
-                button type = "submit"
-                value = "Submit" / >
-                </form>);
-            }
+         constructor(props) {
+    super(props);
+    this.state = {
+      name:  '',
+      gender: '',
+      height: '',
+      hairColor: '',
+      eyeColor: '',
+      url: '',
+      planet:'',
+      numPerson: '',
+    };
+    this.changeName = this.changeName.bind(this);
+    this.changeGender = this.changeGender.bind(this);
+    this.changeHeight=this.changeHeight.bind(this);
+    this.changeHairColor = this.changeHairColor.bind(this);
+    this.changeEyeColor = this.changeEyeColor.bind(this);
+    this.changeURL = this.changeURL.bind(this);
+    this.changePlanet = this.changePlanet.bind(this);
+    this.changeNumPerson = this.changeNumPerson.bind(this);
+
+    this.executeSignUp = this.executeSignUp.bind(this);
+  }
+
+  changeName(event) {
+    this.setState({ name: event.target.value });
+  }
+
+  changeGender(event) {
+    this.setState({ gender: event.target.value });
+  }
+  changeHeight(event) {
+    this.setState({ height: event.target.value });
+  }
+
+  changeHairColor(event) {
+    this.setState({ hairColor: event.target.value });
+  }
+  changeEyeColor(event) {
+    this.setState({ eyeColor: event.target.value });
+  }
+  changeURL(event) {
+    this.setState({ url: event.target.value });
+  }
+  changeNumPerson(event) {
+    this.setState({ numPerson: event.target.value });
+  }
+  changePlanet(event) {
+    this.setState({ planet: event.target.value });
+  }
+
+  executeSignUp() {
+    const body = {
+      name: this.state.name,
+      gender: this.state.gender,
+      height: this.state.height,
+      hairColor: this.state.hairColor,
+      eyeColor: this.state.eyeColor,
+      url: this.state.hairColor,
+      planet: this.state.planet,
+      numPerson: this.state.numPerson,
+    };
+    console.log(body);
+  }
+
+  renderInput(label, value, inputType, onChange) {
+    return (
+      <div className="form-group row">
+        <label className="col-sm-4 col-form-label">{label}</label>
+        <div className="col-sm-8">
+          <input type={inputType} className="form-control" value={value} onChange={onChange} />
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div className="row centerRow">
+          <div className="col-3" />
+          <div className="col-6 card newCard">
+            <div className="card-body">
+              {this.renderInput('Nombre', this.state.name, 'text', this.changeName)}
+              {this.renderInput('Altura', this.state.height, 'text', this.changeHeight)}
+              {this.renderInput('Color de cabello', this.state.hairColor, 'text', this.changeHairColor)}
+              {this.renderInput('Color de ojos', this.state.eyeColor, 'text', this.changeEyeColor)}
+              {this.renderInput('URL', this.state.url, 'text', this.changeURL)}
+              {this.renderInput('Planeta', this.state.planet, 'text', this.changePlanet)}
+              {this.renderInput('Numero de Personaje', this.state.numPerson, 'text', this.changeNumPerson)}
+            
+              <div className="col-12">
+                <button type="button" className="btn btn-primary btn-block" onClick={this.executeSignUp}>Agregar</button>
+              </div>
+              <div className="col-12">
+               
+              </div>
+              <div className="col-12 empty">
+                {this.state.error && this.state.error}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
         }

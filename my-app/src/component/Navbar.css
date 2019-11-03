@@ -1,0 +1,10 @@
+.small {
+  width: 9%;
+}
+
+.userContainer {
+  display: block;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-top: auto;
+}
