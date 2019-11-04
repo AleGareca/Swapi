@@ -1,6 +1,7 @@
 import React from 'react';
+
 export default class Form extends React.Component {
-         constructor(props) {
+    constructor(props) {
     super(props);
     this.state = {
       name:  '',
@@ -20,6 +21,7 @@ export default class Form extends React.Component {
     this.changeURL = this.changeURL.bind(this);
     this.changePlanet = this.changePlanet.bind(this);
     this.changeNumPerson = this.changeNumPerson.bind(this);
+   // this.descriptionPerson=this.descriptionPerson.bind(this);
 
     this.executeSignUp = this.executeSignUp.bind(this);
   }
@@ -65,6 +67,19 @@ export default class Form extends React.Component {
     console.log(body);
   }
 
+  /*descriptionPerson(data){
+    this.setState({name:data.name});
+    this.setState({gender:data.gender});
+    this.setState({height:data.height});
+    this.setState({hairColor:data.hairColor});
+    this.setState({eyeColor:data.eyeColor});
+    this.setState({url:data.url});
+    this.setState({planet:data.homeworld});
+    
+  
+
+  }*/
+
   renderInput(label, value, inputType, onChange) {
     return (
       <div className="form-group row">
@@ -77,19 +92,29 @@ export default class Form extends React.Component {
   }
 
   render() {
+    const person = this.props.person;
+
+
+
+
+
+
     return (
+      
       <div className="container">
+        
         <div className="row centerRow">
           <div className="col-3" />
           <div className="col-6 card newCard">
             <div className="card-body">
-              {this.renderInput('Nombre', this.state.name, 'text', this.changeName)}
-              {this.renderInput('Altura', this.state.height, 'text', this.changeHeight)}
-              {this.renderInput('Color de cabello', this.state.hairColor, 'text', this.changeHairColor)}
-              {this.renderInput('Color de ojos', this.state.eyeColor, 'text', this.changeEyeColor)}
-              {this.renderInput('URL', this.state.url, 'text', this.changeURL)}
-              {this.renderInput('Planeta', this.state.planet, 'text', this.changePlanet)}
+              {this.renderInput('Nombre', person.name, 'text', this.changeName)}
+              {this.renderInput('Altura', person.height, 'text', this.changeHeight)}
+              {this.renderInput('Color de cabello', person.hair_color, 'text', this.changeHairColor)}
+              {this.renderInput('Color de ojos', person.eye_color, 'text', this.changeEyeColor)}
+              {this.renderInput('URL', person.url, 'text', this.changeURL)}
+              {this.renderInput('Planeta', person.homeworld, 'text', this.changePlanet)}
               {this.renderInput('Numero de Personaje', this.state.numPerson, 'text', this.changeNumPerson)}
+              
             
               <div className="col-12">
                 <button type="button" className="btn btn-primary btn-block" onClick={this.executeSignUp}>Agregar</button>
@@ -106,4 +131,4 @@ export default class Form extends React.Component {
       </div>
     );
   }
-        }
+ }       
